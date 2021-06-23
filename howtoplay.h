@@ -1,4 +1,4 @@
-//Windiarta - 2006535792
+//Airell Ramadhan Budiraharjo - 2006535230
 
 void print_title(){
 	printf("\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\n\n\n",
@@ -85,7 +85,7 @@ void print_wait_3s(){
 }
 
 
-//Airell Ramadhan Budiraharjo - 2006535230
+
 
 void how_to_play (){
 		printf(".___________. __    __  .___________.  ______    .______       __      ___       __  \n");
