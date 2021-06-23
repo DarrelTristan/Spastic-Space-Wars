@@ -102,5 +102,3 @@ int menu(){
 	} while (code != '\r');
 	return input+1;
 }
-
-
