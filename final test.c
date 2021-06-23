@@ -7,7 +7,6 @@
 #include <ctype.h>
 #include <conio.h>
 #include <windows.h>
-#include "text.h"
 #include "singleplayer.h"
 #include "leaderboards.h"
 #include "multiplayer.h"
