@@ -1,9 +1,8 @@
 //Windiarta - 2006535792
 
 
-void multi()
+void multi(int refresh)
 {
-	int refresh = 50;
     int sizey = 24;
     int sizex = 40;
     int x, y, yi;
