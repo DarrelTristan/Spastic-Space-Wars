@@ -1,4 +1,4 @@
-//Darrell Tristan 
+//This part was coded by Darrel Tristan <2006577303>
 
 void single(int refresh, float *time, int *globalScore)
 {
@@ -16,13 +16,14 @@ void single(int refresh, float *time, int *globalScore)
     int victory = 1;
     int laserReady = 1;
     int enemyReady = 0;
-	double t1, t2;
+	
+	double t1, t2; //initiaties the time integer
 
-	print_wait_3s();
+	print_wait_3s(); //timer function before the game starts
 	
 	t1 = omp_get_wtime();
 	
-    /*inisialisasi arena game*/
+    /*initiate the game arena*/
     int totalEnemies = 0;
     for (x = 0; x < sizex; x ++) {
         for (y = 0; y < sizey; y ++) {
@@ -80,6 +81,8 @@ void single(int refresh, float *time, int *globalScore)
                 }
             }
         }
+	 
+	 /*This is the hit logic function (when the enemy or player got hit)*/
         for (x = 0; x < sizex; x ++) {
             for (y = 0; y < sizey; y ++) {
                 if ((i % 5) == 0 && (world[y][x] == enemyShielded
@@ -131,8 +134,8 @@ void single(int refresh, float *time, int *globalScore)
             }
         }
 
-         /*refresh arah gerak musuh*/
-        /* fungsi dibawah adalah untuk refresh/gerak kesamping pada sumbu x*/
+         /*enemy movement logic*/
+        /* refresh for movements on the x axis*/
         for (y = 0; y < sizey; y ++) {
             if (world[y][0] == enemy) {
                 direction = 'r';
@@ -147,7 +150,7 @@ void single(int refresh, float *time, int *globalScore)
         }
 
         /*update board*/
-        /* fungsi dibawah adalah untuk refresh/gerak kebawah jika board sudah mencapai batasan x sehingga tidak menumpuk*/
+        /* update board works when the enemy hit the border so it goes down (doesn't stack on the borders)*/
         if (i % enemySpeed == 0) {
             if (direction == 'l') {
                 for (x = 0; x < sizex - 1; x ++) {
@@ -188,7 +191,7 @@ void single(int refresh, float *time, int *globalScore)
             }
         }
 
-        /*funsgsi kontrol pada player*/
+        /*player control logic/function*/
         if(kbhit()){
             keyPress = tolower(getch());
         }
@@ -237,7 +240,7 @@ void single(int refresh, float *time, int *globalScore)
     
     print_gameover();
     
-    	/*Jika player menang (menghancurkan semua musuh)*/
+    	/*winning condition*/
     if (victory != 0) {
        // printf("\n \n \n \n \n \n               CONGRATULATIONS! \n \n \n \n \n");
         Sleep(1000);
@@ -253,7 +256,7 @@ void single(int refresh, float *time, int *globalScore)
         getch();
     }
     
-    /*Jika player kalah (musuh mencapai batas bawah/player terkena hit)*/
+    /*lose condition*/
     else {
        // printf("\n \n \n \n \n \n               You have failed.");
         Sleep(1000);
