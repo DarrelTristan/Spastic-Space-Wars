@@ -11,6 +11,7 @@
 #include "singleplayer.h"
 #include "leaderboards.h"
 #include "multiplayer.h"
+#include "howtoplay.h"
 
 int menu();	
 void print_title();
@@ -46,7 +47,7 @@ int main(){
 				}
 			case 4 : 
 				{	//How to Play 
-					
+					how_to_play();
 					break;
 				}
 			case 5 : 
@@ -102,3 +103,5 @@ int menu(){
 	} while (code != '\r');
 	return input+1;
 }
+
+
