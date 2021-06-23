@@ -1,4 +1,4 @@
-# Spastic-Space-Wars
+# Spastic Space Wars
 
 This is a video game program that resembles those space wars type of video game. 
 This program could also run in single player mode or multiplayer mode.
