@@ -1,4 +1,4 @@
-
+//Windiarta - 2006535792
 
 #include <stdio.h>
 #include <omp.h>
@@ -12,23 +12,21 @@
 #include "leaderboards.h"
 #include "multiplayer.h"
 
-
-int menu();	//main menu interface
+int menu();	
 void print_title();
 
 int main(){
-	int max_used_threads = 3;
-	int option, player, dead = 0;
-	int i,j,k;
+	int option;
 	int refreshRate = 50;
-	int globalScore; float time;
+	int globalScore; 
+	float time;
 	char name[10];
 	do {
 		option = menu();
 		system("cls");
 		switch (option){
 			case 1 : 
-				{	//Singleplayer
+				{	//Singleplayer -> play single player game, save battle report in text file
 					printf("Username : ");
 					scanf("%s", &name);
 					single(refreshRate, &time, &globalScore);
@@ -36,18 +34,18 @@ int main(){
 					break;
 				}
 			case 2 : 
-				{	//Local Multiplayer
-					multi();
+				{	//Local Multiplayer -> free play of local multiplayer
+					multi(refreshRate);
 					break;
 				}
 			case 3 : 
-				{	//Leaderboard and save in a file (make a new file if no save file)
+				{	//Leaderboard -> ranking list from every singleplayer game
 					openf();
 					display();
 					break;
 				}
 			case 4 : 
-				{	//How to Play
+				{	//How to Play 
 					
 					break;
 				}
@@ -60,27 +58,9 @@ int main(){
 				}
 		}	
 	} while (option != 5);
-	
-	
-	
-
-
-/*	#pragma omp parallel num_threads(max_used_threads)
-	{
-		int numt = omp_get_thread_num();
-		int threads = omp_get_num_threads();
-		printf("Hello from thread %d of %d\n", numt, threads);
-	}
-	return 0;
-*/	
-	
-	
-	
-	
-	
-	
 }
 
+//Main menu interface
 int menu(){
 	char code;
 	int input = 0, maks = 5;
@@ -122,6 +102,3 @@ int menu(){
 	} while (code != '\r');
 	return input+1;
 }
-
-
-
