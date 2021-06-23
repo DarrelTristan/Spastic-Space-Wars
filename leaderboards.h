@@ -1,4 +1,4 @@
-//This part was coded by Airell Ramadhan B <2006535230>
+//This part was coded by Airell Ramadhan Budiraharjo <2006535230>
 
 #include <stdio.h>  
 #include <stdlib.h>
@@ -36,7 +36,7 @@ void sortList() {
     //Node current will point to head  
     struct node *current = head, *index = NULL;  
     int temp;
-	float temp1;
+    float temp1;
     char temp2[100];
           
     if(head == NULL) {  
@@ -59,21 +59,21 @@ void sortList() {
                     index->time = temp1; 
                         
                     strcpy(temp2,current->s);
-            		strcpy(current->s,index->s);
-            		strcpy(index->s,temp2);
+            	    strcpy(current->s,index->s);
+            	    strcpy(index->s,temp2);
                 }
-				else if(current->data == index->data && strcmpi(current->s,index->s) > 0) {  
+		else if(current->data == index->data && strcmpi(current->s,index->s) > 0) {  
                     temp = current->data;  
                     current->data = index->data;  
                     index->data = temp;
 					
-					temp1 = current->time;
-					current->time = index->time;
-					index->time = temp1;  
+		    temp1 = current->time;
+               	    current->time = index->time;
+		    index->time = temp1;  
                 
                     strcpy(temp2,current->s);
-            		strcpy(current->s,index->s);
-            		strcpy(index->s,temp2);
+            	    strcpy(current->s,index->s);
+            	    strcpy(index->s,temp2);
                 }  
                 index = index->next;  
             }  
@@ -89,32 +89,31 @@ void openf(){
 	float waktu;
 	char nama[10];
 	fptr = fopen("ScoreText.txt","r");
-	if(fptr == NULL){
+	if(fptr == NULL){                  //create file if the file doesn't exist
 		fclose(fptr);
 	 	fopen("ScoreText.txt","w");
 	 	fclose(fptr);
 	}
 	else {
 		int c = getc(fptr);
-		while (c != EOF) {	
-   			fscanf(fptr, "%s %d %f\n", nama, &score, &waktu);
+		while (c != EOF) {	//Looping when not reaching end of file 
+   			fscanf(fptr, "%s %d %f\n", nama, &score, &waktu);  //read file
 			addNode(nama, score, waktu);
 			c = getc(fptr);	
 		}
-
 		fclose(fptr);
 	}
  }
 
 void write (FILE *fptr){
-	fptr = fopen ("ScoreText.txt", "w");    
+    fptr = fopen ("ScoreText.txt", "w");    
     struct node *current = head;  
     if(head == NULL) {  
         printf("Tidak ada list \n");  
         return;  
     }
-    while(current != NULL) { 
-		fprintf(fptr, "- %10s\t %d\t %.2f\n", current->s, current->data, current->time);
+    while(current != NULL) {    //write the data from linked list to the text file
+	fprintf(fptr, "- %10s\t %d\t %.2f\n", current->s, current->data, current->time);
         current = current->next;  
     } 
 	fclose(fptr);   
@@ -125,14 +124,13 @@ void display (){
 	int i = 1;
 	printf ("\n\n\n\t%3s\t%10s\t%s\t%s\n", "NO.", "NAME", "SCORE", "TIME");
 	printf ("\t======================================\n");
-
-	while(current != NULL) {
-		printf("\t%3d\t", i);
-		printf("%10s\t", current->s);
-    	printf("%d\t", current->data);
-		printf("%.2f\n", current->time);
-		current = current->next;	
-		i++;
+	while(current != NULL) {		//print data from linked list
+	      printf("\t%3d\t", i);
+	      printf("%10s\t", current->s);
+    	      printf("%d\t", current->data);
+	      printf("%.2f\n", current->time);
+	      current = current->next;	
+              i++;
 	}  
 	head = NULL;
 	free(current);
@@ -142,18 +140,18 @@ void display (){
 } 
       
 void leaderboard (char name[10], float *time, int *globalScore){
-	FILE *fptr;  
+    FILE *fptr;  
 	
-	struct node *current = head;
-	head = NULL;
-	openf();
+    struct node *current = head;
+    head = NULL;
+    openf();                                     //Check text file and read text file to get data for linked list
 
-	addNode(name, *globalScore, *time);   //linked list
+    addNode(name, *globalScore, *time);          //add linked list
 
       
     sortList();    		                     //Sorting list (descending)
     write(fptr);    			             //Write leaderboard to the text
-    free(head);
+    free(head);					     //Free the data on linked list
     getch();
     system("cls");
 }  
