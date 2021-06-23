@@ -151,8 +151,8 @@ void leaderboard (char name[10], float *time, int *globalScore){
 	addNode(name, *globalScore, *time);   //linked list
 
       
-    sortList();    				             //Sorting list (descending)
-	write(fptr);    			             //Write leaderboard to the text
+    sortList();    		                     //Sorting list (descending)
+    write(fptr);    			             //Write leaderboard to the text
     free(head);
     getch();
     system("cls");
