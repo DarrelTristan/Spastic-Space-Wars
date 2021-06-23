@@ -1,3 +1,5 @@
+//This part was coded by Airell Ramadhan B <2006535230>
+
 #include <stdio.h>  
 #include <stdlib.h>
 #include <string.h>
