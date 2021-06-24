@@ -7,10 +7,10 @@
 #include <ctype.h>
 #include <conio.h>
 #include <windows.h>
+#include "howtoplay.h"
 #include "singleplayer.h"
 #include "leaderboards.h"
 #include "multiplayer.h"
-#include "howtoplay.h"
 
 int menu();	
 void print_title();
